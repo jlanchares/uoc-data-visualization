@@ -1,0 +1,9 @@
+task,start,end,phase
+Requirements,2026-01-05,2026-01-22,Planning
+UX design,2026-01-15,2026-02-08,Design
+Architecture,2026-01-20,2026-02-14,Design
+Backend development,2026-02-09,2026-03-30,Build
+Frontend development,2026-02-16,2026-04-02,Build
+Integration testing,2026-03-23,2026-04-15,Test
+User acceptance,2026-04-09,2026-04-25,Test
+Release,2026-04-27,2026-05-01,Launch
