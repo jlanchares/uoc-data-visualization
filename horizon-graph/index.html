@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Horizon Graph · UOC</title>
   <link rel="stylesheet" href="../assets/styles.css">
+  <style>
+    /* Page-specific rules; the shared stylesheet is left untouched for the other charts. */
+    .tooltip { white-space: pre-line; }
+    #warnings { font-size: .9rem; padding-left: 1.2rem; }
+    .table-wrap { overflow-x: auto; }
+    #data-table { border-collapse: collapse; font-size: .85rem; font-variant-numeric: tabular-nums; }
+    #data-table th, #data-table td { padding: 4px 12px; text-align: right; border-bottom: 1px solid #e5ebf3; white-space: nowrap; }
+  </style>
 </head>
 <body>
   <header>
     <h1>Horizon Graph</h1>
-    <p>Demo: compact positive/negative time-series comparison</p>
+    <p>Comparing the growth of six national economies</p>
     <nav>
       <a href="../">← Home</a>
       <a href="../area-chart/">Area</a>
@@ -18,20 +26,53 @@
   </header>
   <main>
     <section class="panel">
-      <h2>Four fictional monthly series</h2>
+      <h2>Annual GDP Growth Comparison (2000–2024)</h2>
       <p class="hint">
-        Each row uses three overlaid intensity bands: blue is positive and red is negative.
-        Band height encodes magnitude; the shape is deliberately compressed.
-        Replace <code>horizon-graph/data.csv</code> with columns <code>date,series,value</code> (YYYY-MM-DD).
+        Values are the annual percentage growth of each country's inflation-adjusted GDP.
+        All six rows share the same time axis and the same bands.
+        Hover over a row for the exact value.
       </p>
-      <div class="legend">
-        <span><i class="swatch" style="background:#2166ac"></i>Positive</span>
-        <span><i class="swatch" style="background:#b2182b"></i>Negative</span>
-      </div>
+      <div id="legend" class="legend"></div>
       <div id="chart" class="chart-host"></div>
-      <p id="status" class="hint"></p>
+      <p id="status" class="hint">Loading data…</p>
+      <ul id="warnings" class="error" hidden></ul>
+
+      <h3>How to read this chart</h3>
+      <p class="hint">
+      A Horizon Graph reduces vertical space by dividing values into magnitude bands and overlaying them. 
+      This makes comparisons across multiple time series easier, at the cost of making individual values 
+      harder to estimate without a tooltip.
+      </p>
+      <p class="hint">
+        Blue shows growth and rises from the bottom edge of a row.
+        Red shows contraction and hangs from the top edge, so both edges of a row mark 0%.
+        Each row folds the same three bands into one height: when a value passes the top of a band,
+        the next darker shade starts again from the same edge.
+        Darker therefore always means a larger change, in either direction.
+      </p>
+      <p class="hint">
+        Red in the same part of several rows marks a downturn shared by several countries, such as
+        2009 (five of the six) and 2020 (all six). Rows that change shade often are more volatile,
+        and the blue after a red section shows how each country recovered.
+        The chart describes what happened and does not explain why.
+      </p>
+      <p class="hint">
+        Intended audience: people interested in comparative macroeconomic trends.
+      </p>
+
+      <details>
+        <summary>Data table: annual GDP growth (%)</summary>
+        <div class="table-wrap"><table id="data-table"></table></div>
+      </details>
+
+      <p class="hint">
+        <strong>Source:</strong> Our World in Data — Annual GDP Growth, based on World Bank data, 2000–2024.
+        <a href="https://ourworldindata.org/grapher/annual-gdp-growth">ourworldindata.org/grapher/annual-gdp-growth</a>.
+        This page shows a stored copy of the data retrieved on 30 October 2026; it is not live or automatically updated.
+      </p>
     </section>
   </main>
+  <div class="tooltip" id="tip"></div>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="./chart.js"></script>
 </body>
