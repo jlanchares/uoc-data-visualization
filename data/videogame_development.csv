@@ -1,0 +1,21 @@
+task,start,end,phase
+Core gameplay design,2026-01-05,2026-01-16,Design
+Visual style and UI mockups,2026-01-08,2026-01-23,Art
+Technical architecture,2026-01-12,2026-01-21,Engineering
+Match-3 board and swapping,2026-01-19,2026-02-02,Engineering
+Tiles and board artwork,2026-01-19,2026-02-06,Art
+Basic gameplay test pass,2026-01-29,2026-02-05,QA
+Iteration 1 demo,2026-02-06,2026-02-06,Engineering
+Level goals and progression,2026-02-02,2026-02-13,Design
+Scoring and combo system,2026-02-09,2026-02-20,Engineering
+Animations and visual effects,2026-02-09,2026-02-25,Art
+Iteration 2 testing,2026-02-18,2026-02-26,QA
+Iteration 2 demo,2026-02-27,2026-02-27,Engineering
+Final levels and balancing,2026-02-23,2026-03-11,Design
+Power-ups and game flow,2026-03-02,2026-03-13,Engineering
+UI polish and audio assets,2026-03-02,2026-03-17,Art
+Regression and device testing,2026-03-11,2026-03-19,QA
+Iteration 3 demo,2026-03-20,2026-03-20,Engineering
+Release candidate build,2026-03-23,2026-03-25,Engineering
+Release candidate validation,2026-03-25,2026-03-30,QA
+Release candidate sign-off,2026-03-31,2026-03-31,QA
