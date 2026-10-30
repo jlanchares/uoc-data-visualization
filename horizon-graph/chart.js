@@ -4,7 +4,8 @@
 const host = d3.select('#chart'), statusEl = d3.select('#status');
 const parse = d3.utcParse('%Y-%m-%d');
 
-d3.csv('./data.csv', d => ({ date: parse(d.date), series: d.series, value: +d.value }))
+// 'no-cache' makes the browser revalidate, so a replaced CSV is never served stale.
+d3.csv('./data.csv', { cache: 'no-cache' }, d => ({ date: parse(d.date), series: d.series, value: +d.value }))
   .then(rows => {
     const data = rows.filter(d => d.date && d.series && Number.isFinite(d.value));
     if (!data.length) throw new Error('No valid rows. Check date,series,value column names.');

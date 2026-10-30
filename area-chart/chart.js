@@ -3,7 +3,8 @@ const host = d3.select('#chart');
 const statusEl = d3.select('#status');
 const tip = d3.select('#tip');
 
-d3.csv('./data.csv', d => ({ year: +d.year, value: +d.value }))
+// 'no-cache' makes the browser revalidate, so a replaced CSV is never served stale.
+d3.csv('./data.csv', { cache: 'no-cache' }, d => ({ year: +d.year, value: +d.value }))
   .then(rows => {
     const data = rows.filter(d => Number.isFinite(d.year) && Number.isFinite(d.value)).sort((a, b) => a.year - b.year);
     if (!data.length) throw new Error('No valid rows. Check year,value column names.');
