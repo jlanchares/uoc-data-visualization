@@ -1,12 +1,3 @@
-# Claude Code instructions and local configuration
-CLAUDE.md
-CLAUDE.local.md
-.claude/
-.claude.json
-
-# Optional: uncomment if your MCP configuration is local/private
-# .mcp.json
-
 # Local environment and editor files
 .env
 .env.local
